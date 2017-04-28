@@ -1,0 +1,21 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery</title>
+</head>
+<body>
+  <a href="http://www.cnblogs.com/Wayou/p/jquery_plugin_tutorial.html"><h1>jquery 插件开发拓展</h1></a>
+  <section>
+    <h3>jQuery插件开发模式</h3>
+    <p>
+      软件开发过程中是需要一定的设计模式来指导开发的，有了模式，我们就能更好地组织我们的代码，并且从这些前人总结出来的模式中学到很多好的实践。
+      根据《jQuery高级编程》的描述，jQuery插件开发方式主要有三种：
+      通过$.extend()来扩展jQuery
+      通过$.fn 向jQuery添加新的方法
+      通过$.widget()应用jQuery UI的部件工厂方式创建
+      通常我们使用第二种方法来进行简单插件开发，说简单是相对于第三种方式。第三种方式是用来开发更高级jQuery部件的，该模式开发出来的部件带有很多jQuery内建的特性，比如插件的状态信息自动保存，各种关于插件的常用方法等，非常贴心，这里不细说。
+      而第一种方式又太简单，仅仅是在jQuery命名空间或者理解成jQuery身上添加了一个静态方法而以。所以我们调用通过$.extend()添加的函数时直接通过$符号调用（$.myfunction()）而不需要选中DOM元素($('#example').myfunction())......
+    </p>
+  </section>
+</body>
+</html>
