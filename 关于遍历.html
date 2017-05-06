@@ -1,0 +1,189 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>遍历的一些方法</title>
+	<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+	<style type="text/css">
+		html,body{font-size: 16px;font-weight: 700;}
+	</style>
+</head>
+<body>
+	<section>
+		<pre>
+			<h1>一、map</h1>
+
+				map函数可以用来遍历数组。它支持一个回调函数作为它的参数，回调函数中有三个参数，依次表示被遍历素组每一项的值value，每一项的索引index，以及数组本身
+
+				var arr = [1, 2, 3, 5];
+				arr.map(function(value, key, arr) {
+				    ...
+				})
+				我们可以对每一项元素进行处理，返回处理之后的结果并组成一个新的数组，不修改数组本身。下面的两个例子，注意return的不同
+
+				[2, 3, 4, 5].map(function(val, key) {
+				    return val > 3;
+				})
+
+				// 运行结果
+				[false, false, true, true]
+				[2, 3, 4, 5].map(function(val, key) {
+				    return val - 1;
+				})
+
+				// 运行结果
+				[1, 2, 3, 4]
+				所以聪明的你，应该也只到下面例子中的data被改变成什么样子了吧
+
+				var data = [
+				    {
+				        name: 'tom',
+				        age: 22
+				    },
+				    {
+				        name: 'link',
+				        age: 19
+				    }
+				]
+
+				data.map(function(item, index) {
+				    return item.age += 20
+				})
+
+				console.log(data);
+			<h1>二、filter</h1>
+
+				过滤函数。返回符合条件的项，最后结果由这些符合条件的项组成。参数情况与map一致。该方法不改变数组本身，运行结果会返回一个新的数组。
+
+				arr = [2, 3, 4, 5, 6].filter(function(item, index) {
+				    return item > 2;
+				})
+
+				// 运行结果
+				arr: [3, 4, 5, 6]
+				下面一个例子，返回岁数小于26岁的人。
+
+				var person = [
+				    {
+				        name: 'tom',
+				        age: 20,
+				    },
+				    {
+				        name: 'jake',
+				        age: 25
+				    },
+				    {
+				        name: 'bis',
+				        age: 32
+				    },
+				    {
+				        name: 'alex',
+				        age: 28
+				    }
+				]
+
+				var aaa = person.filter(function(item, index) {
+				    return item.age < 26
+				})
+
+				console.log(person, aaa);
+				凡是你需要从一个数组中找到一组具有某些特征或者不需要某些特征的项，你就可以用到filter过滤函数
+
+				<h1>三、reduce</h1>
+
+				我们先来看看一个实例。
+
+				var arr = [2, 3, 4, 5, 6];
+
+				var res = arr.reduce(function(res, cur, index, arr) {
+				    return res + cur
+				})
+
+				console.log(arr, res);
+
+				// res为 20 所有项的和
+				该方法的回调函数中有4个参数，分别是，上一项叠加后的结果，当前项，当前项的索引值，数组本身。没错，这就是一个叠加函数，通过reduce，我们可以得到某种聚合的结果，比如下面的例子，我们计算所有物品的总和
+
+				var thing = [
+				    {
+				        name: 'xiaom',
+				        price: 1999
+				    },
+				    {
+				        name: 'apple',
+				        price: 6666,
+				    },
+				    {
+				        name: 'huawei',
+				        price: 2999
+				    }
+				]
+
+				var acount = thing.reduce(function(res, cur) {
+				    return cur.price + res
+				}, 0)
+
+				console.log(acount);
+
+				<h1>四、 sort</h1>
+
+				排序函数。一个素组，从小到大排序应该如何做？
+
+				var arr = [2, 6, 3, 9, 1, 6];
+
+				arr.sort(function(cur, nex) {
+				    return cur - nex
+				})
+
+				console.log(arr); 
+				// [1, 2, 3, 6, 6, 9]
+				从小到大？
+
+				var arr = [2, 6, 3, 9, 1, 6];
+
+				arr.sort(function(cur, nex) {
+				    return nex - cur
+				})
+
+
+				将下列商品按照价格排序？
+
+				var produts = [
+				    {
+				        name: 'xssg',
+				        price: 10,
+				    },
+				    {
+				        name: 'xssg',
+				        price: 20,
+				    },
+				    {
+				        name: 'xssg',
+				        price: 8,
+				    },
+				    {
+				        name: 'xssg',
+				        price: 4,
+				    },
+				    {
+				        name: 'xssg',
+				        price: 7,
+				    },
+				    {
+				        name: 'xssg',
+				        price: 1,
+				    }
+				]
+				试试看运行结果
+
+				produts.sort(function(cur, nex) {
+				    return cur.price - nex.price;
+				})
+				看上去确实很厉害的样子，同学们赶紧get起来，我们一起远离for循环 .- -
+
+		</pre>
+	</section>
+
+	<p> <a href="http://www.jianshu.com/p/7f43f0ec52c5">摘自简书 ：大神<strong>波同学</strong></a></p>
+	
+</body>
+</html>
